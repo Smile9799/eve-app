@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+<changeSet  author="Eversmile"  id="1.1">
+    <sql>
+        INSERT INTO TBL_USERS (UUID, EMAIL, PASSWORD, FIRST_NAME, LAST_NAME, IS_ACTIVE, IS_LOCKED, DATE_JOINED)
+        values(UUID(), 'GAMERIGMEEK@GMAIL.COM', 'TEST@123', 'EVERSMILE', 'MUTHANUNI', TRUE, FALSE, SYSDATE());
+    </sql>
+</changeSet>
+</databaseChangeLog>

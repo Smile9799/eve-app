@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet  author="Eversmile"  id="1.1">
+        <sql>
+            INSERT INTO TBL_ROLES (UUID, ROLE_NAME, ROLE_DESCRIPTION, IS_ACTIVE)
+            values(UUID(), 'ROLE_USER', 'regular low level user', TRUE);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
