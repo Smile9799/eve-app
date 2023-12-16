@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="container mt-4" th:fragment="create-budget">
+  <h4 class="card-title">Budget form</h4>
+  <p></p>
+  <form th:action="@{/finance/budget/add}" method="post" th:object="${budgetRequest}">
+    <div class="form-group">
+      <label for="budgetName">Budget Name</label>
+      <input type="text" class="form-control" id="budgetName" placeholder="Budget Name" required th:field="*{budgetName}"/>
+    </div>
+    <div class="form-group">
+      <label for="beginsAt">Begins At</label>
+      <input type="date" class="form-control" id="beginsAt" th:field="*{beginsAt}"/>
+    </div>
+    <div class="form-group">
+      <label for="endsAt">Ends At</label>
+      <input type="date" class="form-control" id="endsAt" th:field="*{endsAt}"/>
+    </div>
+    <div class="form-group">
+      <label for="expectedAmount">Expected Amount</label>
+      <input type="number" class="form-control" id="expectedAmount" readonly/>
+    </div>
+    <div class="form-group">
+      <label for="actualAmount">Actual Amount</label>
+      <input type="number" class="form-control" id="actualAmount" readonly/>
+    </div>
+    <div class="form-check form-check-flat form-check-primary">
+      <label class="form-check-label" for="isSuccessful">
+        <input type="checkbox" class="form-check-input" id="isSuccessful" disabled checked /> Is Successful
+      </label>
+    </div>
+    <div class="form-check form-check-flat form-check-primary">
+      <label class="form-check-label" for="isDone">
+        <input type="checkbox" class="form-check-input" id="isDone" disabled checked /> Is Complete
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="budgetType">Budget Type</label>
+      <select class="form-control form-control-lg" id="budgetType" th:field="*{budgetType}">
+        <option th:value="DAILY">DAILY</option>
+        <option th:value="MONTHLY">MONTHLY</option>
+        <option th:value="WEEKLY">WEEKLY</option>
+        <option th:value="ANNUAL">ANNUAL</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="budgetGroup">Budget Group</label>
+      <select class="form-control form-control-lg" id="budgetGroup" th:field="*{budgetGroup}">
+        <option th:each="userGroup : ${userGroups}" th:value="${userGroup.uuid}" th:text="${userGroup.groupName}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="budgetComment">Budget Comment</label>
+      <textarea
+              class="form-control"
+              id="budgetComment"
+              rows="4"
+              th:field="*{budgetComment}"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+  </form>
+</div>

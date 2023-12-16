@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="container mt-4" th:fragment="budget-item-details">
+    <h2>Budget Item Details</h2>
+    <ul class="list-group">
+        <li class="list-group-item" style="background-color: #dc3545;">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="item2">
+                <label class="custom-control-label" for="item2">Item 2</label>
+            </div>
+            <p>Expected Amount: $300</p>
+            <p>Actual Amount: $250</p>
+            <p>Expected Date: February 1, 2023</p>
+            <p>Actual Date: January 25, 2023</p>
+            <p>Status: In Progress</p>
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#comment2" aria-expanded="false" aria-controls="comment2">
+                Show Comment
+            </button>
+            <div class="collapse" id="comment2">
+                <p>Comment: This is another test item.</p>
+            </div>
+        </li>
+    </ul>
+</div>
+</html>

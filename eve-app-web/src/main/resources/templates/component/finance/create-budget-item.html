@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="container mt-4" th:fragment="create-budget-item">
+  <h4 class="card-title">Budget Item form</h4>
+  <p></p>
+  <form method="post" th:action="@{/finance/budget/items/add}" th:object="${budgetItemRequest}">
+    <input type="hidden" th:field="*{budgetId}">
+    <input type="hidden" th:value="${uuid}" th:field="*{uuid}">
+    <div class="form-group">
+      <label for="budgetItemName">Item Name</label>
+      <input type="text" class="form-control" id="budgetItemName" placeholder="Item Name" th:field="*{itemName}"/>
+    </div>
+    <div class="form-group">
+      <label for="expectedDate">Expected Date</label>
+      <input type="date" class="form-control" id="expectedDate" th:field="*{expectedDate}"/>
+    </div>
+    <div class="form-group">
+      <label for="actualDate">Actual Date</label>
+      <input type="date" class="form-control" id="actualDate" readonly th:field="*{actualDate}"/>
+    </div>
+    <div class="form-group">
+      <label for="expectedAmount">Expected Amount</label>
+      <input type="number" class="form-control" id="expectedAmount" th:field="*{expectedAmount}"/>
+    </div>
+    <div class="form-group">
+      <label for="actualAmount">Actual Amount</label>
+      <input type="number" class="form-control" id="actualAmount" readonly th:field="*{actualAmount}"/>
+    </div>
+    <div class="form-check form-check-flat form-check-primary">
+      <label class="form-check-label" for="isSuccessful">
+        <input type="checkbox" class="form-check-input" id="isSuccessful" readonly /> Is Successful
+      </label>
+    </div>
+    <div class="form-check form-check-flat form-check-primary">
+      <label class="form-check-label" for="isDone">
+        <input type="checkbox" class="form-check-input" id="isDone" readonly /> Is Complete
+      </label>
+    </div>
+    <div class="form-check form-check-flat form-check-primary">
+      <label class="form-check-label" for="isPlanned">
+        <input type="checkbox" class="form-check-input" id="isPlanned" /> Planned Item
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="itemNotes">Notes</label>
+      <textarea
+              class="form-control"
+              id="itemNotes"
+              rows="4"
+              th:field="*{notes}"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+  </form>
+</div>

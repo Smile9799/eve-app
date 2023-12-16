@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="container mt-4" th:fragment="login">
+    <h2>Login</h2>
+    <form method="post" th:action="@{/auth/login}">
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" required>
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+        </div>
+
+        <!-- Remember Me Checkbox -->
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe" name="remember-me">Remember Me</label>
+        </div>
+
+        <!-- Forgot Password Link -->
+        <div class="form-group mt-2">
+            <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    <!-- Registration Link -->
+    <div class="mt-3">
+        <p>Don't have an account? <a th:href="@{/auth/register}">Register here</a></p>
+    </div>
+</div>

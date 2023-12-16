@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <div class="container mt-4" th:fragment="register">
+    <h4 class="card-title">Registration form</h4>
+    <p></p>
+    <form method="post" th:object="${appUser}" th:action="@{/auth/register}">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" placeholder="First Name" th:field="*{firstName}"/>
+        <p th:errors = "*{firstName}" class="form-control text-danger" th:if="${#fields.hasErrors('firstName')}"></p>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" placeholder="Last Name" th:field="*{lastName}" />
+        <p th:errors = "*{lastName}" class="form-control text-danger" th:if="${#fields.hasErrors('lastName')}"></p>
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email"  placeholder="Email" th:field="*{email}" />
+        <p th:errors = "*{email}" class="form-control text-danger" th:if="${#fields.hasErrors('email')}"></p>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" th:field="*{password}" />
+        <p th:errors = "*{password}" class="form-control text-danger" th:if="${#fields.hasErrors('password')}"></p>
+      </div>
+      <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+    </form>
+    <div class="mt-3">
+      <p>Already have an account? <a th:href="@{/auth/login}">Login here</a></p>
+    </div>
+  </div>

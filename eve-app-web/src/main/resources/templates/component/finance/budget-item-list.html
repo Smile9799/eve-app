@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="container mt-4" th:fragment="budget-item-list">
+  <h2>Budget Details</h2>
+  <a th:href="@{/finance/budget/items/add/{id}(id=${budget.uuid})}" class="btn btn-success mb-3">Add New Budget Item</a>
+  <p></p>
+  <div class="row">
+    <div class="col-md-6">
+      <h4 th:text="${budget.budgetName}">Budget Metadata</h4>
+      <p><strong>Expected Amount:</strong> R<span th:text="${budget.expectedAmount}"></span></p>
+      <p><strong>Actual Amount:</strong> R<span th:text="${budget.actualAmount}"></span></p>
+      <p><strong>Status:</strong> In Progress</p>
+      <p><strong>Budget Type:</strong> <span th:text="${budget.budgetType}"></span></p>
+      <p><strong>Start Date:</strong> <span th:text="${#temporals.format(budget.beginsAt, 'dd-MM-yyyy HH:mm')}"></span></p>
+      <p><strong>End Date:</strong> <span th:text="${#temporals.format(budget.endsAt, 'dd-MM-yyyy HH:mm')}"></span></p>
+      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#budgetComment" aria-expanded="false" aria-controls="comment2">
+        Show Comment
+      </button>
+      <div class="collapse" id="budgetComment">
+        <p th:text="${budget.budgetComment}">Comment: This is another test item.</p>
+      </div>
+    </div>
+  </div>
+  <ul class="list-group">
+<!--    style="background-color: #dc3545;"-->
+    <li class="list-group-item" th:each="budgetItem : ${budget.budgetItems}">
+      <strong><h2  th:text="${budgetItem.itemName}">Item 2</h2></strong>
+      <p>Expected Amount: R<span th:text="${budgetItem.expectedAmount}"></span></p>
+      <p>Actual Amount: R<span th:text="${budgetItem.actualAmount}"></span></p>
+      <p>Expected Date: <span th:text="${#temporals.format(budgetItem.expectedDate, 'dd-MM-yyyy HH:mm')}"></span></p>
+      <p>Actual Date: <span th:text="${#temporals.format(budgetItem.actualDate, 'dd-MM-yyyy HH:mm')}"></span></p>
+      <p>Status: In Progress</p>
+      <span th:if="${not #lists.isEmpty(budgetItem.budgetItemDetails)}">
+        <a th:href="@{/finance/budget/item/details/{id}(id=${budgetItem.uuid})}" class="btn btn-primary">View Tasks</a>
+      </span>
+      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#comment2" aria-expanded="false" aria-controls="comment2">
+        Show Notes
+      </button>
+      <div class="collapse" id="comment2">
+        <p th:text="${budgetItem.notes}">Comment: This is another test item.</p>
+      </div>
+    </li>
+  </ul>
+</div>
+</html>

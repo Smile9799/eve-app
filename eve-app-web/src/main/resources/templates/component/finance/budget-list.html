@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="container mt-4" th:fragment="budget-list">
+  <h2>Budgets</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" th:each="budget : ${budgets}">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${budget.budgetName}">Budget 1</h5>
+          <p class="card-text">Duration: <span th:text="${#temporals.format(budget.beginsAt, 'dd-MM-yyyy HH:mm')}"></span> - <span th:text="${#temporals.format(budget.endsAt, 'dd-MM-yyyy HH:mm')}"></span></p>
+          <p class="card-text">Status: In Progress</p>
+          <p class="card-text">Actual Amount: R<span th:text="${budget.actualAmount}"></span></p>
+          <p class="card-text">Expected Amount: R<span th:text="${budget.expectedAmount}"></span></p>
+          <a th:href="@{/finance/budget/items/{id}(id=${budget.uuid})}" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

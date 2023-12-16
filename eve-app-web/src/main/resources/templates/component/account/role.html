@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="row" th:fragment="role">
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Add new role form</h4>
+        <p></p>
+        <form class="forms-sample" method="post" th:action="@{/app/role}" th:object="${role}">
+          <div class="form-group">
+            <label for="roleName">Role Name</label>
+            <input type="text" name="roleName" class="form-control" id="roleName" placeholder="Role Name" th:field="*{roleName}"/>
+            <p th:errors = "*{roleName}" class="form-control text-danger" th:if="${#fields.hasErrors('roleName')}"></p>
+          </div>
+          <div class="form-check form-check-flat form-check-primary">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" /> Remember me </label>
+          </div>
+          <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
